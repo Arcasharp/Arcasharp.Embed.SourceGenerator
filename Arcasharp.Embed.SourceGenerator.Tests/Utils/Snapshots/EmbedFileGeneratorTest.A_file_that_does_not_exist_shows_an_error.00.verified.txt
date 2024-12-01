@@ -1,0 +1,14 @@
+﻿{
+  Diagnostics: [
+    {
+      Id: ASG0001,
+      Title: The file 'file-that-does-not-exist.txt' does not exist,
+      Severity: Error,
+      WarningLevel: 0,
+      Location: {ProjectDirectory}Tests\EmbedFileGeneratorTest.cs: (5,12)-(5,53),
+      MessageFormat: The file '{ProjectDirectory}Tests\file-that-does-not-exist.txt' does not exist,
+      Message: The file '{ProjectDirectory}Tests\file-that-does-not-exist.txt' does not exist,
+      Category: Arcasharp.Embed.SourceGenerator
+    }
+  ]
+}

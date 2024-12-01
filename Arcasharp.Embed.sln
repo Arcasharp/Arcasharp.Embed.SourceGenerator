@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcasharp.Embed.SourceGenerator", "Arcasharp.Embed.SourceGenerator\Arcasharp.Embed.SourceGenerator.csproj", "{BD6B7B61-AA9C-4AC7-A65C-AFCE0C752A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcasharp.Embed.SourceGenerator.Tests", "Arcasharp.Embed.SourceGenerator.Tests\Arcasharp.Embed.SourceGenerator.Tests.csproj", "{AABD178C-A4E5-4026-B5D6-B5777C65BCA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcasharp.Embed.SourceGenerator.IntegrationTests", "Arcasharp.Embed.SourceGenerator.IntegrationTests\Arcasharp.Embed.SourceGenerator.IntegrationTests.csproj", "{196237A3-FF4D-4AD6-8AE3-8C1F38EED5D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD6B7B61-AA9C-4AC7-A65C-AFCE0C752A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6B7B61-AA9C-4AC7-A65C-AFCE0C752A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6B7B61-AA9C-4AC7-A65C-AFCE0C752A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6B7B61-AA9C-4AC7-A65C-AFCE0C752A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABD178C-A4E5-4026-B5D6-B5777C65BCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABD178C-A4E5-4026-B5D6-B5777C65BCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABD178C-A4E5-4026-B5D6-B5777C65BCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABD178C-A4E5-4026-B5D6-B5777C65BCA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196237A3-FF4D-4AD6-8AE3-8C1F38EED5D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196237A3-FF4D-4AD6-8AE3-8C1F38EED5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196237A3-FF4D-4AD6-8AE3-8C1F38EED5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196237A3-FF4D-4AD6-8AE3-8C1F38EED5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
