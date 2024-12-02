@@ -1,0 +1,28 @@
+name: NuGet Push
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c Release --no-restore 
+      - name: Test
+        run: dotnet test -c Release --no-build --verbosity normal
+      - name: Publish
+        run: dotnet pack -c Release --no-build --output nupkgs -p:PackageVersion=${GITHUB_REF_NAME}
+      - name: NuGet Push
+        run: dotnet nuget push nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

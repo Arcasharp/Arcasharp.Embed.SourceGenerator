@@ -7,6 +7,24 @@
         <LangVersion>Latest</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageId>Arcasharp.Embed.SourceGenerator</PackageId>
+        <Authors>Arcasharp</Authors>
+        <Description>Embed files directly in your .NET executable via a source generator</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <RepositoryUrl>https://github.com/Arcasharp/Arcasharp.Embed.SourceGenerator</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Source Generator Embed Arcasharp</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Deterministic>true</Deterministic>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(CI)' == 'true'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" PrivateAssets="all"/>
@@ -15,5 +33,9 @@
     <ItemGroup>
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true"
               PackagePath="analyzers/dotnet/cs" Visible="false"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="/"/>
     </ItemGroup>
 </Project>
