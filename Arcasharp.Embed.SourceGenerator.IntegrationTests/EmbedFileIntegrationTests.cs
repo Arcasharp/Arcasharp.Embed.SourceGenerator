@@ -1,4 +1,6 @@
-﻿namespace Arcasharp.Embed.IntegrationTests;
+﻿using Arcasharp.Embed.IntegrationTests.ScopeTests;
+
+namespace Arcasharp.Embed.IntegrationTests;
 
 public class EmbedFileIntegrationTests
 {

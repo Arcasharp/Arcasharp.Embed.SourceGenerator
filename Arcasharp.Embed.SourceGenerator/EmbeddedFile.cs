@@ -12,4 +12,5 @@ internal sealed class EmbeddedFile
     public required SyntaxNode Node { get; init; }
     public required string ClassVisibility { get; init; }
     public required string MethodVisibility { get; init; }
+    public required DateTimeOffset? LastUpdated { get; set; }
 }

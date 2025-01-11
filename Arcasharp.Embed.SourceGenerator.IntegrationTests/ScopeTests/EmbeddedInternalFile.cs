@@ -1,4 +1,4 @@
-namespace Arcasharp.Embed.IntegrationTests;
+namespace Arcasharp.Embed.IntegrationTests.ScopeTests;
 
 public static partial class EmbeddedInternalFile
 {
