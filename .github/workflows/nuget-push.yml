@@ -25,4 +25,4 @@ jobs:
       - name: Publish
         run: dotnet pack -c Release --no-build --output nupkgs -p:PackageVersion=${GITHUB_REF_NAME}
       - name: NuGet Push
-        run: dotnet nuget push nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push nupkgs/*.symbols.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
