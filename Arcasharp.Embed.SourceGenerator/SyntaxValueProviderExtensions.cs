@@ -60,8 +60,7 @@ internal static class SyntaxValueProviderExtensions
         string methodName = method.Identifier.Text;
         string namespaceName = SanitizeNamespace(context.SemanticModel.GetDeclaredSymbol(method)?.ContainingNamespace);
         ClassDeclarationSyntax? parentClass = method.Parent as ClassDeclarationSyntax;
-        string className = parentClass?.Identifier.Text ?? string.Empty;
-        string classVisibility = GetVisibility(parentClass);
+        ClassDefinition className = GetHierarchicalClass(parentClass);
         string methodVisibility = GetVisibility(method);
         DateTimeOffset? lastUpdated = TryGetLastUpdatedTime(fullFilePath);
         return new EmbeddedFile
@@ -69,12 +68,36 @@ internal static class SyntaxValueProviderExtensions
             MethodName = methodName,
             FullFilePath = fullFilePath,
             Namespace = namespaceName,
-            ClassName = className,
+            Class = className,
             Node = attribute,
-            ClassVisibility = classVisibility,
             MethodVisibility = methodVisibility,
             LastUpdated = lastUpdated
         };
+    }
+
+    private static ClassDefinition GetHierarchicalClass(ClassDeclarationSyntax? parentClass)
+    {
+        List<(string, string)> classes = new();
+        ClassDeclarationSyntax? currentClass = parentClass;
+        while (currentClass is not null)
+        {
+            classes.Add((currentClass.Identifier.Text, GetVisibility(currentClass)));
+            currentClass = currentClass.Parent as ClassDeclarationSyntax;
+        }
+
+        classes.Reverse();
+        ClassDefinition classDefinition = null!;
+        foreach ((string className, string visibility) in classes)
+        {
+            classDefinition = new()
+            {
+                Name = className,
+                Visibility = visibility,
+                Parent = classDefinition
+            };
+        }
+        
+        return classDefinition;
     }
 
     private static string SanitizeNamespace(INamespaceSymbol? containingNamespace)
@@ -88,7 +111,7 @@ internal static class SyntaxValueProviderExtensions
         {
             return string.Empty;
         }
-        
+
         return containingNamespace.ToDisplayString();
     }
 

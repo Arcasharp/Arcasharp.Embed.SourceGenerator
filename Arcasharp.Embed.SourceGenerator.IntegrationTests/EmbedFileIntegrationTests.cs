@@ -32,6 +32,15 @@ public class EmbedFileIntegrationTests
     }
 
     [Fact]
+    public void File_content_can_be_read_from_a_nested_class()
+    {
+        byte[] expectedContent = "This is an embedded file 😁"u8.ToArray();
+        byte[] sut = NestedPrivateClassEmbeddedFile.GetFile();
+
+        Assert.Equal(expectedContent, sut);
+    }
+
+    [Fact]
     public void Class_can_embed_multiple_files()
     {
         byte[] expectedContent = "This is an embedded file 😁"u8.ToArray();

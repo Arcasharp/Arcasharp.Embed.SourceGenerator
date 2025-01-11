@@ -29,7 +29,7 @@ public sealed class EmbedFileSourceGenerator : IIncrementalGenerator
             }
 
             EmbedFileMethodSourceGeneratorOutput output = new(file);
-            ctx.AddSource($"{file.ClassName}.{file.MethodName}.g.cs", output.GenerateSource());
+            ctx.AddSource($"{file.Class.Name}.{file.MethodName}.g.cs", output.GenerateSource());
         });
     }
 }
