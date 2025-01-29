@@ -50,4 +50,13 @@ public class EmbedFileIntegrationTests
         Assert.Equal(expectedContent, MultipleEmbeddedFiles.GetFileASecondTime());
         Assert.NotEqual(MultipleEmbeddedFiles.GetSecondFile(), MultipleEmbeddedFiles.GetFileASecondTime());
     }
+
+    [Fact]
+    public void Class_can_embed_a_large_file_files()
+    {
+        byte[] expectedContent = File.ReadAllBytes("octocat.jpg");
+        byte[] sut = EmbeddedFiles.GetOctocat();
+
+        Assert.Equal(expectedContent, sut);
+    }
 }

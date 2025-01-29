@@ -23,4 +23,11 @@
         <ProjectReference Include="..\Arcasharp.Embed.SourceGenerator\Arcasharp.Embed.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="octocat.jpg" />
+      <Content Include="octocat.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
