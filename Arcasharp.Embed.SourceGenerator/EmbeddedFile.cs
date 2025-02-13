@@ -12,6 +12,7 @@ internal sealed class EmbeddedFile
     public required SyntaxNode Node { get; init; }
     public required string MethodVisibility { get; init; }
     public required DateTimeOffset? LastUpdated { get; set; }
+    public required MethodType? MethodType { get; init; }
 }
 
 internal sealed class ClassDefinition
@@ -19,4 +20,10 @@ internal sealed class ClassDefinition
     public required string Name { get; init; }
     public required string Visibility { get; init; }
     public ClassDefinition? Parent { get; init; }
+}
+
+internal enum MethodType
+{
+    ByteArray,
+    String
 }

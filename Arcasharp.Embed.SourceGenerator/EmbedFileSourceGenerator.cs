@@ -28,6 +28,21 @@ public sealed class EmbedFileSourceGenerator : IIncrementalGenerator
                 return;
             }
 
+            if (file.MethodType is null)
+            {
+                DiagnosticDescriptor diagnostic = new(
+                    "ASG0002",
+                    $"The method return type is invalid",
+                    $"The method {file.MethodName} must return either a byte[] or a string",
+                    "Arcasharp.Embed.SourceGenerator",
+                    DiagnosticSeverity.Error,
+                    true
+                );
+
+                ctx.ReportDiagnostic(Diagnostic.Create(diagnostic, file.Node.GetLocation()));
+                return;
+            }
+
             EmbedFileMethodSourceGeneratorOutput output = new(file);
             ctx.AddSource($"{file.Class.Name}.{file.MethodName}.g.cs", output.GenerateSource());
         });

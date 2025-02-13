@@ -63,6 +63,8 @@ internal static class SyntaxValueProviderExtensions
         ClassDefinition className = GetHierarchicalClass(parentClass);
         string methodVisibility = GetVisibility(method);
         DateTimeOffset? lastUpdated = TryGetLastUpdatedTime(fullFilePath);
+        MethodType? methodType = GetMethodType(method);
+        
         return new EmbeddedFile
         {
             MethodName = methodName,
@@ -71,7 +73,8 @@ internal static class SyntaxValueProviderExtensions
             Class = className,
             Node = attribute,
             MethodVisibility = methodVisibility,
-            LastUpdated = lastUpdated
+            LastUpdated = lastUpdated,
+            MethodType = methodType
         };
     }
 
@@ -124,6 +127,16 @@ internal static class SyntaxValueProviderExtensions
         }
 
         return fileInfo.LastWriteTimeUtc;
+    }
+    
+    private static MethodType? GetMethodType(MethodDeclarationSyntax method)
+    {
+        return method.ReturnType.ToString() switch
+        {
+            "byte[]" => MethodType.ByteArray,
+            "string" => MethodType.String,
+            _ => null
+        };
     }
 
     private static string GetVisibility(SyntaxNode node)
